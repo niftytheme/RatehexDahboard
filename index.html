@@ -1,21 +1,954 @@
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/libs/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/libs/bootstrap/bootstrap-rtl.min.css">
-    <link rel="stylesheet" href="./assets/css/libs/uicons/uicons-bold-rounded.css">
-    <link rel="stylesheet" href="./assets/css/libs/uicons/uicons-bold-solid.css">
-    <link rel="stylesheet" href="./assets/css/libs/uicons/uicons-bold-regular.css">
-    <link rel="stylesheet" href="./assets/css/custom/style.css">
-    <title>Ratehex</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--  <link rel="stylesheet" href="./assets/css/libs/bootstrap/bootstrap.min.css">-->
+  <link rel="stylesheet" href="./assets/css/libs/bootstrap/bootstrap-rtl.min.css">
+  <link rel="stylesheet" href="./assets/css/libs/uicons/uicons-bold-rounded.css">
+  <link rel="stylesheet" href="./assets/css/libs/uicons/uicons-bold-solid.css">
+  <link rel="stylesheet" href="./assets/css/libs/uicons/uicons-bold-regular.css">
+  <link rel="stylesheet" href="./assets/css/custom/style.css">
+  <script src="./assets/js/libs/ApexCharts/ApexCharts-3.50.0.min.js"></script>
+  <title>Ratehex</title>
 </head>
 <body>
+
+<!-- :: LOADER :: -->
+<div class="loader">
+  <div class="spinner"></div>
+</div>
+
+<!-- :: MAIN :: -->
+<main>
+  <!-- :: NAVBAR :: -->
+  <nav class="theme-navbar ml-auto">
+    <div class="container-fluid">
+      <div class="d-flex align-items-center justify-content-between flex-wrap" data-gap-y="10px">
+        <!-- right-content -->
+        <div class="right-content d-flex align-items-center order-1">
+          <!-- sidebar-btn -->
+          <button type="button" aria-label="Menu" class="sidebar-btn d-xxl-none d-inline-flex align-items-center justify-content-center ml--sm-2"  id="sidebar-btn">
+            <i class="fi fi-rr-menu-burger"></i>
+          </button>
+          <!-- page-title -->
+          <div class="page-title">الشاشة الرئيسية</div>
+        </div>
+        <!-- search-area -->
+        <div class="search-area d-inline-flex align-items-center position-relative order-xl-2 order-3">
+          <input type="text" placeholder="بحث ...">
+          <i class="fi fi-rr-search position-absolute"></i>
+        </div>
+        <!-- user-area -->
+        <div class="user-area position-relative d-flex align-items-center order-xl-3 order-2">
+          <!-- options -->
+          <div class="options d-flex align-items-center" data-gap-x="10px">
+            <!-- option : lang -->
+            <div class="option lang-option d-inline-flex" id="lang-option" title="Change Language" data-gap-x="10px">
+              <i class="fi fi-rr-angle-small-down"></i>
+              <span class="option-text">العربية</span>
+              <i class="fi fi-rr-globe"></i>
+              <!-- lang-menu -->
+              <div class="lang-menu">
+                <a href="#" title="العربية" class="active">العربية</a>
+                <a href="#" title="English">English</a>
+              </div>
+            </div>
+            <!-- option : messages -->
+            <a href="#" aria-label="Link" class="option" title="Messages Center">
+              <i class="fi fi-rr-comment-alt-dots"></i>
+            </a>
+            <!-- option : notifications -->
+            <a href="#" aria-label="Link" class="option active" title="Notifications">
+              <i class="fi fi-rr-bell"></i>
+            </a>
+          </div>
+          <!-- user -->
+          <div class="user d-flex align-items-center position-relative" data-gap-x="10px">
+            <!-- avatar -->
+            <div class="avatar position-relative">
+              <img src="./assets/images/users/01.png" class="img-fluid" alt="User">
+            </div>
+            <!-- details -->
+            <div class="details">
+              <div class="wel-msg">مرحباً بك</div>
+              <div class="user-name">م/ مستخـدم جـديـد</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- :: ASIDE :: -->
+  <aside>
+    <!-- aside-btn -->
+    <button type="button" class="aside-btn" id="aside-btn">
+      <i class="fi fi-br-angle-double-small-right"></i>
+    </button>
+    <div class="aside-content">
+      <!-- logo -->
+      <div class="logo d-flex align-items-center justify-content-center">
+        <img src="./assets/images/logos/ratehex.webp" class="img-fluid" alt="Logo">
+      </div>
+      <!-- menu -->
+      <div class="menu d-flex align-items-start justify-content-between flex-column">
+        <!-- main-menu -->
+        <ul class="main-menu list-unstyled">
+          <!-- m-item -->
+          <li class="m-item active">
+            <a href="#">
+              <i class="fi fi-rr-apps icon"></i>
+              <span class="link-text">الشاشة الرئيسية</span>
+            </a>
+          </li>
+          <li class="m-item">
+            <a href="#">
+              <i class="fi fi-rr-bullhorn icon"></i>
+              <span class="link-text">التنبيهات</span>
+            </a>
+          </li>
+          <li class="m-item">
+            <a href="#">
+              <i class="fi fi-rr-chart-pie-alt icon"></i>
+              <span class="link-text">التقارير</span>
+            </a>
+          </li>
+          <li class="m-item">
+            <a href="#">
+              <i class="fi fi-rr-interrogation icon"></i>
+              <span class="link-text">من نحن؟</span>
+            </a>
+          </li>
+          <li class="m-item">
+            <a href="#">
+              <i class="fi fi-rr-headset icon"></i>
+              <span class="link-text">تواصل معنا</span>
+            </a>
+          </li>
+        </ul>
+        <!-- main-menu -->
+        <ul class="main-menu list-unstyled">
+          <!-- m-item -->
+          <li class="m-item">
+            <a href="#">
+              <i class="fi fi-rr-settings icon"></i>
+              <span class="link-text">الإعدادات</span>
+            </a>
+          </li>
+          <!-- m-item -->
+          <li class="m-item">
+            <a href="#">
+              <i class="fi fi-rr-sign-out-alt icon"></i>
+              <span class="link-text">تسجيل الخروج</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+  <!-- :: MAIN-CONTENT :: -->
+  <div class="main-content">
+    <div class="container-fluid">
+      <!-- welcome-msg -->
+      <div class="welcome-msg bordered">
+        <span class="colorized mr-2">حتي اللحظة:</span> احصائيات وبعض مؤشرات الأداء الخاصة بالمشروع حتي اللحظة
+      </div>
+      <!-- row : (charts, pies, count) -->
+      <div class="row small-gutters mt-4" data-gap-y="15px">
+        <!-- col : (charts) -->
+        <div class="col-xxl-5 col-xl-6">
+          <!-- row -->
+          <div class="row small-gutters" data-gap-y="15px">
+            <!-- col -->
+            <div class="col-lg-6">
+              <!-- data-box -->
+              <div class="data-box">
+                <!-- box-header -->
+                <div class="box-header">
+                  <i class="fi fi-rr-devices"></i>
+                  <div class="box-title">الأجهزة</div>
+                </div>
+                <!-- box-content -->
+                <div class="box-content pb-0">
+                  <!-- pie-box -->
+                  <div class="pie-box">
+                    <div id="devices_chart" class="chart" dir="ltr"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- col -->
+            <div class="col-lg-6">
+              <!-- data-box -->
+              <div class="data-box">
+                <!-- box-header -->
+                <div class="box-header">
+                  <i class="fi fi-rr-code-branch"></i>
+                  <div class="box-title">الفروع</div>
+                </div>
+                <!-- box-content -->
+                <div class="box-content pb-0">
+                  <!-- pie-box -->
+                  <div class="pie-box">
+                    <div id="branches_chart" class="chart" dir="ltr"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- col -->
+            <div class="col-lg-6">
+              <!-- data-box -->
+              <div class="data-box">
+                <!-- box-header -->
+                <div class="box-header">
+                  <i class="fi fi-rr-boxes"></i>
+                  <div class="box-title">المنتجات</div>
+                </div>
+                <!-- box-content -->
+                <div class="box-content pb-0">
+                  <!-- pie-box -->
+                  <div class="pie-box">
+                    <div id="products_chart" class="chart" dir="ltr"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- col -->
+            <div class="col-lg-6">
+              <!-- data-box -->
+              <div class="data-box">
+                <!-- box-header -->
+                <div class="box-header">
+                  <i class="fi fi-rr-briefcase"></i>
+                  <div class="box-title">الموظفين</div>
+                </div>
+                <!-- box-content -->
+                <div class="box-content pb-0">
+                  <!-- pie-box -->
+                  <div class="pie-box">
+                    <div id="employees_chart" class="chart" dir="ltr"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- col : (pies) -->
+        <div class="col-xxl-5 col-xl-6 h-100">
+          <!-- row -->
+          <div class="row small-gutters" data-gap-y="15px">
+            <!-- col -->
+            <div class="col-lg-6">
+              <!-- data-box -->
+              <div class="data-box">
+                <!-- box-content -->
+                <div class="box-content">
+                  <!-- pie-box -->
+                  <div class="pie-box pie-has-footer">
+                    <div id="pie_1" class="chart" dir="ltr"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- col -->
+            <div class="col-lg-6">
+              <!-- data-box -->
+              <div class="data-box">
+                <!-- box-content -->
+                <div class="box-content">
+                  <!-- pie-box -->
+                  <div class="pie-box pie-has-footer">
+                    <div id="pie_2" class="chart" dir="ltr"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- col -->
+            <div class="col-lg-6">
+              <!-- data-box -->
+              <div class="data-box">
+                <!-- box-content -->
+                <div class="box-content">
+                  <!-- pie-box -->
+                  <div class="pie-box pie-has-footer">
+                    <div id="pie_3" class="chart" dir="ltr"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- col -->
+            <div class="col-lg-6">
+              <!-- data-box -->
+              <div class="data-box">
+                <!-- box-content -->
+                <div class="box-content">
+                  <!-- pie-box -->
+                  <div class="pie-box pie-has-footer">
+                    <div id="pie_4" class="chart" dir="ltr"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- col : (count) -->
+        <div class="col-xxl-2">
+          <!-- row -->
+          <div class="row small-gutters" data-gap-y="15px">
+            <!-- col -->
+            <div class="col-xxl-12 col-lg-4 col-md-4">
+              <!-- count-box -->
+              <div class="count-box box-a">
+                <h3 class="box-num">250 <sub>شخص</sub></h3>
+                <div class="box-text">عـدد المشــاركيــن</div>
+                <div class="box-icon">
+                  <img src="./assets/images/shapes/wave-01.png" class="img-fluid" alt="image">
+                </div>
+              </div>
+            </div>
+            <!-- col -->
+            <div class="col-xxl-12 col-lg-4 col-md-4">
+              <!-- count-box -->
+              <div class="count-box box-b">
+                <h3 class="box-num">250 <sub>شخص</sub></h3>
+                <div class="box-text">عـدد المشــاركيــن</div>
+                <div class="box-icon">
+                  <img src="./assets/images/shapes/wave-01.png" class="img-fluid" alt="image">
+                </div>
+              </div>
+            </div>
+            <!-- col -->
+            <div class="col-xxl-12 col-lg-4 col-md-4">
+              <!-- count-box -->
+              <div class="count-box box-c">
+                <h3 class="box-num">250 <sub>شخص</sub></h3>
+                <div class="box-text">عـدد المشــاركيــن</div>
+                <div class="box-icon">
+                  <img src="./assets/images/shapes/wave-01.png" class="img-fluid" alt="image">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- row : (reports) -->
+      <div class="row mt-3 small-gutters" data-gap-y="15px">
+        <!-- col : from (date) to (date) -->
+        <div class="col-xl-6">
+          <!-- data-box -->
+          <div class="data-box">
+            <!-- box-content -->
+            <div class="box-content border-bottom">
+              <!-- form -->
+              <form action="#" method="POST">
+                <!-- row -->
+                <div class="row align-items-end" data-gap-y="15px">
+                  <!-- col -->
+                  <div class="col-md-4">
+                    <div class="form-group mb-0">
+                      <label for="fromDate">مـن تـاريـخ :</label>
+                      <input type="date" class="form-control" id="fromDate" placeholder="">
+                    </div>
+                  </div>
+                  <!-- col -->
+                  <div class="col-md-4">
+                    <div class="form-group mb-0">
+                      <label for="toDate">الـي تـاريـخ :</label>
+                      <input type="date" class="form-control" id="toDate" placeholder="">
+                    </div>
+                  </div>
+                  <!-- col -->
+                  <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary w-100">عرض</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- box-content -->
+            <div class="box-content">
+              <!-- report-chart -->
+              <div class="report-cart">
+                <div id="report_chart1" dir="ltr"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- col : (branches) -->
+        <div class="col-xl-6">
+          <!-- data-box -->
+          <div class="data-box">
+            <!-- box-header -->
+            <div class="box-header">
+              <div class="box-title">تقرير الفرع 1 (مقارنة خاصة بمستوي التقييم)</div>
+            </div>
+            <!-- box-content -->
+            <div class="box-content border-bottom">
+              <!-- form -->
+              <form action="#" method="POST" class="report-form">
+                <!-- row -->
+                <div class="row align-items-start" data-gap-y="15px">
+                  <!-- col -->
+                  <div class="col-xxl-6 col-xl-12 col-lg-6 border-right">
+                    <!-- row -->
+                    <div class="row" data-gap-y="15px">
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="monthComp">
+                          <label class="custom-control-label" for="monthComp">مقارنة شهرية</label>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="dailyComp">
+                          <label class="custom-control-label" for="dailyComp">مقارنة يومية</label>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="weekComp" checked="checked">
+                          <label class="custom-control-label" for="weekComp">مقارنة اسبوعية</label>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="hourComp">
+                          <label class="custom-control-label" for="hourComp">مقارنة بالساعة</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- col -->
+                  <div class="col-xxl-6 col-xl-12 col-lg-6">
+                    <!-- row -->
+                    <div class="row small-gutters" data-gap-y="10px">
+                      <!-- col -->
+                      <div class="col-md-6">
+                        <!-- form=group -->
+                        <div class="form-group has-icon">
+                          <i class="fi fi-rr-circle-star"></i>
+                          <select class="form-control" id="select1" title="select">
+                            <option selected disabled>اختر بند التقييم</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-md-6">
+                        <!-- form=group -->
+                        <div class="form-group has-icon">
+                          <i class="fi fi-rr-circle-user"></i>
+                          <select class="form-control" id="select2" title="select">
+                            <option selected disabled>اختر الموظف</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- box-content -->
+            <div class="box-content">
+              <!-- report-chart -->
+              <div class="report-cart">
+                <div id="report_chart2" dir="ltr"></div>
+              </div>
+            </div>
+            <!-- box-footer -->
+            <div class="box-footer">
+              <div class="footer-text">احصائيات حسب بنود التقييم المختارة علي مستوي الفرع المحدد</div>
+            </div>
+          </div>
+        </div>
+        <!-- col : (employees) -->
+        <div class="col-xl-6">
+          <!-- data-box -->
+          <div class="data-box">
+            <!-- box-header -->
+            <div class="box-header">
+              <div class="box-title">تقرير الموظفين (مقارنة خاصة بمستوي التقييم)</div>
+            </div>
+            <!-- box-content -->
+            <div class="box-content border-bottom">
+              <!-- form -->
+              <form action="#" method="POST" class="report-form">
+                <!-- row -->
+                <div class="row align-items-start" data-gap-y="15px">
+                  <!-- col -->
+                  <div class="col-xxl-6 col-xl-12 col-lg-6">
+                    <!-- row -->
+                    <div class="row" data-gap-y="15px">
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="monthComp2">
+                          <label class="custom-control-label" for="monthComp2">مقارنة شهرية</label>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="dailyComp2">
+                          <label class="custom-control-label" for="dailyComp2">مقارنة يومية</label>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="weekComp2" checked="checked">
+                          <label class="custom-control-label" for="weekComp2">مقارنة اسبوعية</label>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="hourComp2">
+                          <label class="custom-control-label" for="hourComp2">مقارنة بالساعة</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- col -->
+                  <div class="col-xxl-6 col-xl-12 col-lg-6 border-left">
+                    <!-- row -->
+                    <div class="row small-gutters" data-gap-y="10px">
+                      <!-- col -->
+                      <div class="col-md-6">
+                        <!-- form=group -->
+                        <div class="form-group has-icon">
+                          <i class="fi fi-rr-circle-star"></i>
+                          <select class="form-control" id="select3" title="select">
+                            <option selected disabled>اختر بند التقييم</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-md-6">
+                        <!-- form=group -->
+                        <div class="form-group has-icon">
+                          <i class="fi fi-rr-circle-user"></i>
+                          <select class="form-control" id="select4" title="select">
+                            <option selected disabled>اختر الموظف</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-md-6">
+                        <!-- form=group -->
+                        <div class="form-group has-icon">
+                          <i class="fi fi-rr-circle-user"></i>
+                          <select class="form-control" id="select5" title="select">
+                            <option selected disabled>اختر الفرع</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- box-content -->
+            <div class="box-content">
+              <!-- report-chart -->
+              <div class="report-cart">
+                <div id="report_chart3" dir="ltr"></div>
+              </div>
+            </div>
+            <!-- box-footer -->
+            <div class="box-footer">
+              <div class="footer-text">احصائيات حسب بنود التقييم المختارة علي مستوي الموظف المحدد</div>
+            </div>
+          </div>
+        </div>
+        <!-- col : (products) -->
+        <div class="col-xl-6">
+          <!-- data-box -->
+          <div class="data-box">
+            <!-- box-header -->
+            <div class="box-header">
+              <div class="box-title">تقرير المنتجات (مقارنة خاصة بمستوي التقييم)</div>
+            </div>
+            <!-- box-content -->
+            <div class="box-content border-bottom">
+              <!-- form -->
+              <form action="#" method="POST" class="report-form">
+                <!-- row -->
+                <div class="row align-items-start" data-gap-y="15px">
+                  <!-- col -->
+                  <div class="col-xxl-6 col-xl-12 col-lg-6">
+                    <!-- row -->
+                    <div class="row" data-gap-y="15px">
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="monthComp3">
+                          <label class="custom-control-label" for="monthComp3">مقارنة شهرية</label>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="dailyComp3">
+                          <label class="custom-control-label" for="dailyComp3">مقارنة يومية</label>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="weekComp3" checked="checked">
+                          <label class="custom-control-label" for="weekComp3">مقارنة اسبوعية</label>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="hourComp3">
+                          <label class="custom-control-label" for="hourComp3">مقارنة بالساعة</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- col -->
+                  <div class="col-xxl-6 col-xl-12 col-lg-6 border-left">
+                    <!-- row -->
+                    <div class="row small-gutters" data-gap-y="10px">
+                      <!-- col -->
+                      <div class="col-md-6">
+                        <!-- form=group -->
+                        <div class="form-group has-icon">
+                          <i class="fi fi-rr-circle-star"></i>
+                          <select class="form-control" id="select6" title="select">
+                            <option selected disabled>اختر بند التقييم</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-md-6">
+                        <!-- form=group -->
+                        <div class="form-group has-icon">
+                          <i class="fi fi-rr-circle-user"></i>
+                          <select class="form-control" id="select7" title="select">
+                            <option selected disabled>اختر الموظف</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-md-6">
+                        <!-- form=group -->
+                        <div class="form-group has-icon">
+                          <i class="fi fi-rr-circle-user"></i>
+                          <select class="form-control" id="select8" title="select">
+                            <option selected disabled>اختر الفرع</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- box-content -->
+            <div class="box-content">
+              <!-- report-chart -->
+              <div class="report-cart">
+                <div id="report_chart4" dir="ltr"></div>
+              </div>
+            </div>
+            <!-- box-footer -->
+            <div class="box-footer">
+              <div class="footer-text">احصائيات حسب بنود التقييم المختارة علي مستوي المنتج المحدد</div>
+            </div>
+          </div>
+        </div>
+        <!-- col : (devices) -->
+        <div class="col-xl-6">
+          <!-- data-box -->
+          <div class="data-box">
+            <!-- box-header -->
+            <div class="box-header">
+              <div class="box-title">تقرير الاجهزة (مقارنة خاصة بمستوي التقييم)</div>
+            </div>
+            <!-- box-content -->
+            <div class="box-content border-bottom">
+              <!-- form -->
+              <form action="#" method="POST" class="report-form">
+                <!-- row -->
+                <div class="row align-items-start" data-gap-y="15px">
+                  <!-- col -->
+                  <div class="col-xxl-6 col-xl-12 col-lg-6">
+                    <!-- row -->
+                    <div class="row" data-gap-y="15px">
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="monthComp4">
+                          <label class="custom-control-label" for="monthComp4">مقارنة شهرية</label>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="dailyComp4">
+                          <label class="custom-control-label" for="dailyComp4">مقارنة يومية</label>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="weekComp4" checked="checked">
+                          <label class="custom-control-label" for="weekComp4">مقارنة اسبوعية</label>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="hourComp4">
+                          <label class="custom-control-label" for="hourComp4">مقارنة بالساعة</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- col -->
+                  <div class="col-xxl-6 col-xl-12 col-lg-6 border-left">
+                    <!-- row -->
+                    <div class="row small-gutters" data-gap-y="10px">
+                      <!-- col -->
+                      <div class="col-md-6">
+                        <!-- form=group -->
+                        <div class="form-group has-icon">
+                          <i class="fi fi-rr-circle-star"></i>
+                          <select class="form-control" id="select9" title="select">
+                            <option selected disabled>اختر بند التقييم</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-md-6">
+                        <!-- form=group -->
+                        <div class="form-group has-icon">
+                          <i class="fi fi-rr-circle-user"></i>
+                          <select class="form-control" id="select10" title="select">
+                            <option selected disabled>اختر الموظف</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-md-6">
+                        <!-- form=group -->
+                        <div class="form-group has-icon">
+                          <i class="fi fi-rr-circle-user"></i>
+                          <select class="form-control" id="select11" title="select">
+                            <option selected disabled>اختر الفرع</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- box-content -->
+            <div class="box-content">
+              <!-- report-chart -->
+              <div class="report-cart">
+                <div id="report_chart5" dir="ltr"></div>
+              </div>
+            </div>
+            <!-- box-footer -->
+            <div class="box-footer">
+              <div class="footer-text">احصائيات حسب بنود التقييم المختارة علي مستوي الجهاز المحدد</div>
+            </div>
+          </div>
+        </div>
+        <!-- col : (management) -->
+        <div class="col-xl-6">
+          <!-- data-box -->
+          <div class="data-box">
+            <!-- box-header -->
+            <div class="box-header">
+              <div class="box-title">تقرير الإدارات (مقارنة خاصة بمستوي التقييم)</div>
+            </div>
+            <!-- box-content -->
+            <div class="box-content border-bottom">
+              <!-- form -->
+              <form action="#" method="POST" class="report-form">
+                <!-- row -->
+                <div class="row align-items-start" data-gap-y="15px">
+                  <!-- col -->
+                  <div class="col-xxl-6 col-xl-12 col-lg-6">
+                    <!-- row -->
+                    <div class="row" data-gap-y="15px">
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="monthComp5">
+                          <label class="custom-control-label" for="monthComp5">مقارنة شهرية</label>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="dailyComp5">
+                          <label class="custom-control-label" for="dailyComp5">مقارنة يومية</label>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="weekComp5" checked="checked">
+                          <label class="custom-control-label" for="weekComp5">مقارنة اسبوعية</label>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-6">
+                        <!-- custom-control -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="hourComp5">
+                          <label class="custom-control-label" for="hourComp5">مقارنة بالساعة</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- col -->
+                  <div class="col-xxl-6 col-xl-12 col-lg-6 border-left">
+                    <!-- row -->
+                    <div class="row small-gutters" data-gap-y="10px">
+                      <!-- col -->
+                      <div class="col-md-6">
+                        <!-- form=group -->
+                        <div class="form-group has-icon">
+                          <i class="fi fi-rr-circle-star"></i>
+                          <select class="form-control" id="select12" title="select">
+                            <option selected disabled>اختر بند التقييم</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-md-6">
+                        <!-- form=group -->
+                        <div class="form-group has-icon">
+                          <i class="fi fi-rr-circle-user"></i>
+                          <select class="form-control" id="select13" title="select">
+                            <option selected disabled>اختر الموظف</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-md-6">
+                        <!-- form=group -->
+                        <div class="form-group has-icon">
+                          <i class="fi fi-rr-circle-user"></i>
+                          <select class="form-control" id="select14" title="select">
+                            <option selected disabled>اختر الفرع</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- box-content -->
+            <div class="box-content">
+              <!-- report-chart -->
+              <div class="report-cart">
+                <div id="report_chart6" dir="ltr"></div>
+              </div>
+            </div>
+            <!-- box-footer -->
+            <div class="box-footer">
+              <div class="footer-text">احصائيات حسب بنود التقييم المختارة علي مستوي الإدارة المحدد</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
 
 <!-- :: SCRIPTS :: -->
 <script src="./assets/js/libs/jQuery/jQuery-3.7.1.min.js"></script>
 <script src="./assets/js/libs/bootstrap/bootstrap.min.js"></script>
+
 <script src="./assets/js/custom/bundle.js"></script>
+<script src="./assets/js/custom/data.js"></script>
 </body>
 </html>
